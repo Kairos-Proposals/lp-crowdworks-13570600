@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos ご提案 | ランディングページ公開・運用サポート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#131A28;
+    --navy-light:#1D2740;
+    --navy-pale:#2A3657;
+    --red:#E4572E;
+    --gold:#F4B400;
+    --teal:#4FD1C5;
+    --off-white:#F4F1EA;
+    --gray:#8D96AC;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--navy);
+    color:var(--off-white);
+    font-family:'Noto Sans JP', sans-serif;
+    font-weight:400;
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-weight:900;
+    letter-spacing:.02em;
+  }
+
+  .mono{
+    font-family:'Space Mono', monospace;
+  }
+
+  a{text-decoration:none; color:inherit;}
+
+  .container{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ===== film perforation decor ===== */
+  .perf-top, .perf-bottom{
+    height:14px;
+    width:100%;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        var(--navy) 0px, var(--navy) 10px,
+        #000 10px, #000 16px,
+        var(--navy) 16px, var(--navy) 26px
+      );
+    opacity:.5;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    padding:100px 0 120px;
+    background:
+      radial-gradient(circle at 80% 10%, rgba(228,87,46,0.18), transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(79,209,197,0.12), transparent 50%),
+      var(--navy);
+    border-bottom:1px solid var(--navy-pale);
+  }
+
+  .rec-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:6px 16px 6px 12px;
+    border:1px solid rgba(228,87,46,.5);
+    border-radius:999px;
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:.15em;
+    color:var(--red);
+    margin-bottom:36px;
+  }
+
+  .rec-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--red);
+    animation:blink 1.4s infinite;
+  }
+
+  @keyframes blink{
+    0%,100%{opacity:1;}
+    50%{opacity:.15;}
+  }
+
+  .hero h1{
+    font-size:clamp(32px, 5.2vw, 64px);
+    line-height:1.35;
+    color:var(--off-white);
+    max-width:14em;
+  }
+
+  .hero h1 .accent{
+    color:var(--gold);
+  }
+
+  .hero p.sub{
+    margin-top:28px;
+    max-width:560px;
+    color:var(--gray);
+    font-size:16px;
+  }
+
+  .hero .from{
+    margin-top:48px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+
+  .from-line{
+    width:40px;
+    height:1px;
+    background:var(--teal);
+  }
+
+  .from-text{
+    font-size:13px;
+    letter-spacing:.1em;
+    color:var(--teal);
+    font-family:'Space Mono', monospace;
+  }
+
+  /* decorative timeline strip on right side of hero (desktop) */
+  .hero-visual{
+    position:absolute;
+    right:24px;
+    top:50%;
+    transform:translateY(-50%);
+    width:220px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    opacity:.85;
+  }
+
+  .hero-visual .bar{
+    height:10px;
+    border-radius:3px;
+    background:linear-gradient(90deg, var(--navy-pale), var(--teal));
+  }
+
+  .hero-visual .bar:nth-child(1){width:100%;}
+  .hero-visual .bar:nth-child(2){width:70%; background:linear-gradient(90deg, var(--navy-pale), var(--gold));}
+  .hero-visual .bar:nth-child(3){width:85%; background:linear-gradient(90deg, var(--navy-pale), var(--red));}
+
+  @media(max-width:860px){
+    .hero-visual{display:none;}
+  }
+
+  /* ===== SECTION BASE ===== */
+  section{
+    padding:90px 0;
+  }
+
+  .section-label{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:.2em;
+    color:var(--teal);
+    margin-bottom:18px;
+    text-transform:uppercase;
+  }
+
+  .section-title{
+    font-size:clamp(24px, 3.4vw, 36px);
+    color:var(--off-white);
+    margin-bottom:28px;
+  }
+
+  /* ===== UNDERSTANDING ===== */
+  .understanding{
+    background:var(--navy-light);
+    border-bottom:1px solid var(--navy-pale);
+  }
+
+  .understanding .lead{
+    font-size:19px;
+    max-width:760px;
+    color:var(--off-white);
+  }
+
+  .understanding .lead strong{
+    color:var(--gold);
+    font-weight:700;
+  }
+
+  .quote-box{
+    margin-top:40px;
+    border-left:3px solid var(--red);
+    padding:20px 28px;
+    background:rgba(228,87,46,0.06);
+    max-width:720px;
+  }
+
+  .quote-box p{
+    color:var(--gray);
+    font-size:15px;
+  }
+
+  /* ===== VALUES ===== */
+  .values-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    margin-top:16px;
+  }
+
+  @media(max-width:900px){
+    .values-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:600px){
+    .values-grid{grid-template-columns:1fr;}
+  }
+
+  .value-card{
+    background:var(--navy-light);
+    border:1px solid var(--navy-pale);
+    border-radius:10px;
+    padding:30px 24px;
+    position:relative;
+    transition:transform .25s ease, border-color .25s ease;
+  }
+
+  .value-card:hover{
+    transform:translateY(-4px);
+    border-color:var(--teal);
+  }
+
+  .value-icon{
+    width:42px;
+    height:42px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Space Mono', monospace;
+    font-size:18px;
+    margin-bottom:20px;
+    color:var(--navy);
+    font-weight:700;
+  }
+
+  .ic-1{background:var(--teal);}
+  .ic-2{background:var(--gold);}
+  .ic-3{background:var(--red); color:var(--off-white);}
+  .ic-4{background:var(--teal);}
+  .ic-5{background:var(--gold);}
+
+  .value-card h3{
+    font-size:17px;
+    color:var(--off-white);
+    margin-bottom:12px;
+  }
+
+  .value-card p{
+    font-size:14px;
+    color:var(--gray);
+  }
+
+  /* ===== PROCESS ===== */
+  .process{
+    background:var(--navy-light);
+    border-top:1px solid var(--navy-pale);
+    border-bottom:1px solid var(--navy-pale);
+  }
+
+  .timeline{
+    position:relative;
+    margin-top:50px;
+  }
+
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:20px;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:linear-gradient(var(--teal), var(--gold), var(--red));
+  }
+
+  @media(max-width:700px){
+    .timeline::before{left:14px;}
+  }
+
+  .step{
+    position:relative;
+    padding-left:60px;
+    margin-bottom:40px;
+  }
+
+  @media(max-width:700px){
+    .step{padding-left:44px;}
+  }
+
+  .step:last-child{margin-bottom:0;}
+
+  .step::before{
+    content:attr(data-num);
+    position:absolute;
+    left:0;
+    top:0;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:var(--navy);
+    border:2px solid var(--teal);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    color:var(--teal);
+  }
+
+  @media(max-width:700px){
+    .step::before{width:30px; height:30px; font-size:11px;}
+  }
+
+  .step h4{
+    font-size:16px;
+    color:var(--off-white);
+    margin-bottom:6px;
+  }
+
+  .step p{
+    font-size:14px;
+    color:var(--gray);
+    max-width:620px;
+  }
+
+  .step .tag{
+    display:inline-block;
+    margin-top:8px;
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    color:var(--gold);
+    letter-spacing:.08em;
+  }
+
+  /* ===== CLOSING ===== */
+  .closing{
+    text-align:center;
+    position:relative;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(244,180,0,0.1), transparent 55%),
+      var(--navy);
+  }
+
+  .closing h2{
+    font-size:clamp(26px,4vw,40px);
+    margin-bottom:20px;
+  }
+
+  .closing p{
+    color:var(--gray);
+    max-width:520px;
+    margin:0 auto 40px;
+  }
+
+  .play-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    padding:18px 38px;
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--red), var(--gold));
+    color:var(--navy);
+    font-weight:700;
+    font-family:'Zen Kaku Gothic New', sans-serif;
+    font-size:16px;
+    box-shadow:0 10px 30px rgba(228,87,46,0.25);
+    transition:transform .2s ease;
+  }
+
+  .play-btn:hover{
+    transform:scale(1.04);
+  }
+
+  .play-icon{
+    width:0; height:0;
+    border-top:7px solid transparent;
+    border-bottom:7px solid transparent;
+    border-left:11px solid var(--navy);
+  }
+
+  .closing .note{
+    margin-top:28px;
+    font-size:12px;
+    color:var(--gray);
+    font-family:'Space Mono', monospace;
+    letter-spacing:.05em;
+  }
+
+  footer{
+    text-align:center;
+    padding:30px 0;
+    font-size:12px;
+    color:var(--gray);
+    font-family:'Space Mono', monospace;
+    letter-spacing:.1em;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="perf-top"></div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="rec-badge"><span class="rec-dot"></span>PROPOSAL FROM KAIROS</div>
+    <h1>そのランディングページは、<br>まだ<span class="accent">「本番」</span>に乗っていません。</h1>
+    <p class="sub">
+      映像もデザインも、素材はすでに揃っている。<br>
+      足りないのは、世界と繋ぐための「公開」という最後の工程です。
+    </p>
+    <div class="from">
+      <div class="from-line"></div>
+      <div class="from-text">KAIROS / WEB PRODUCTION &amp; SYSTEM</div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+</section>
+
+<div class="perf-bottom"></div>
+
+<!-- ===== UNDERSTANDING ===== -->
+<section class="understanding">
+  <div class="container">
+    <div class="section-label">UNDERSTANDING / 01</div>
+    <h2 class="section-title">「作ったのに、届いていない」を終わらせる。</h2>
+    <p class="lead">
+      貴社ではすでに、サービスや映像の魅力を伝えるランディングページを<strong>社内で企画・制作</strong>されています。
+      必要なのはゼロからのデザインではなく、そのページを<strong>安全に公開し、迷わず運用し続けられる仕組み</strong>。
+      サーバー・ドメイン・表示確認・更新体制まで、「公開後」を任せられるパートナーです。
+    </p>
+    <div class="quote-box">
+      <p>
+        「デザインはできている。でも、公開の仕方が分からない」「社内で更新できる体制も作りたい」——
+        映像制作に軸を置く貴社だからこそ、Web公開・運用の実務はプロに委ねることで、
+        本来注力すべき情報発信そのものに時間を使えるはずです。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VALUES ===== -->
+<section class="values">
+  <div class="container">
+    <div class="section-label">WHAT WE PROVIDE / 02</div>
+    <h2 class="section-title">Kairosがご提供できること</h2>
+    <div class="values-grid">
+
+      <div class="value-card">
+        <div class="value-icon ic-1">●</div>
+        <h3>公開環境の構築</h3>
+        <p>サーバー・ドメインの取得/設定からSSL化まで。Netlify等のホスティングサービスにも対応し、最短で安全な本番環境を整えます。</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon ic-2">▶</div>
+        <h3>表示崩れゼロの最終調整</h3>
+        <p>HTML/CSSの微修正、画像・文章・リンクの反映、PC/スマートフォン双方での表示・動作確認まで一貫して対応します。</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon ic-3">⬡</div>
+        <h3>映像・SNS連携設定</h3>
+        <p>YouTube動画の埋め込み、SNSリンク連携など、映像制作会社ならではの発信力を最大化するページ構成をサポートします。</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon ic-4">◎</div>
+        <h3>検索基盤の整備</h3>
+        <p>Google Search Consoleの設定、基本的なSEO対応まで実施し、公開後に「見つけてもらえる」状態を作ります。</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon ic-5">✎</div>
+        <h3>社内運用への引き継ぎ</h3>
+        <p>更新方法の分かりやすいマニュアル作成とレクチャーを実施。将来的に社内だけで更新できる体制づくりに協力します。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="process">
+  <div class="container">
+    <div class="section-label">PROCESS / 03</div>
+    <h2 class="section-title">進め方のイメージ</h2>
+
+    <div class="timeline">
+      <div class="step" data-num="01">
+        <h4>現状ヒアリング・確認</h4>
+        <p>制作済みページのデータ、希望ドメイン、現在のサーバー状況などをヒアリングします。</p>
+        <span class="tag">WEEK 1</span>
+      </div>
+      <div class="step" data-num="02">
+        <h4>公開環境の構築</h4>
+        <p>サーバー・ドメイン・SSLなど、本番公開に必要な環境を整備します。</p>
+        <span class="tag">WEEK 1-2</span>
+      </div>
+      <div class="step" data-num="03">
+        <h4>最終調整・公開</h4>
+        <p>表示崩れの修正、PC/SP動作確認、SEO基本設定を行い、本番公開します。</p>
+        <span class="tag">WEEK 2</span>
+      </div>
+      <div class="step" data-num="04">
+        <h4>運用引き継ぎ</h4>
+        <p>更新手順のマニュアルを作成し、社内スタッフの方へレクチャーを実施します。</p>
+        <span class="tag">WEEK 3</span>
+      </div>
+      <div class="step" data-num="05">
+        <h4>継続保守（任意）</h4>
+        <p>必要に応じて、情報更新や保守を継続的にサポートすることも可能です。</p>
+        <span class="tag">ONGOING</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLOSING ===== -->
+<section class="closing">
+  <div class="container">
+    <div class="section-label" style="justify-content:center; display:flex;">NEXT ACTION / 04</div>
+    <h2>そのページを、公開しましょう。</h2>
+    <p>
+      要件・現在の進捗・ご予算感など、まずは一度お聞かせください。
+      条件を踏まえたお見積りと進め方を、改めてご提案いたします。
+    </p>
+    <a href="#" class="play-btn">
+      <span class="play-icon"></span>
+      Kairosに相談・見積もりを依頼する
+    </a>
+    <p class="note">PROPOSAL FOR info_834d / BY KAIROS WEB PRODUCTION &amp; SYSTEM TEAM</p>
+  </div>
+</section>
+
+<footer>
+  © KAIROS — WEB PRODUCTION &amp; SYSTEM DEVELOPMENT TEAM
+</footer>
+
+</body>
+</html>
